@@ -1,27 +1,28 @@
+// app/page.tsx
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react'; // Thêm useState nếu cần
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
 import WelcomeCard from '../components/dashboard/WelcomeCard';
 import SensorsChart from '../components/dashboard/SensorsChart';
 import DeviceControls from '../components/dashboard/DeviceControls';
-import VisitStats from '../components/dashboard/VisitStats';
-import RoomCamera from '../components/dashboard/RoomCamera';
+import FanControl from '../components/dashboard/FanControl';
 import { useSensorData } from '../hooks/useSensorData';
 import { useDeviceControl } from '../hooks/useDeviceControl';
 import { useWeather } from '../hooks/useWeather';
-import { VisitStats as VisitStatsType } from '../models/interfaces/stats';
 
 export default function Home() {
   const { data, loading: dataLoading } = useSensorData('Month');
   const { devices, toggleDevice, loading: devicesLoading } = useDeviceControl();
   const { weather, loading: weatherLoading } = useWeather();
   
-  // Dummy stats data
-  const visitStats: VisitStatsType = {
-    visits: "184k",
-    growthPercentage: "20.04"
+  const [fanSpeed, setFanSpeed] = useState(50);
+  
+  // Thêm hàm xử lý thay đổi tốc độ quạt
+  const handleFanSpeedChange = (speed: number) => {
+    setFanSpeed(speed);
+    console.log(`Fan speed changed to: ${speed}`);
   };
   
   // Hiển thị loader khi đang fetch dữ liệu
@@ -46,8 +47,7 @@ export default function Home() {
           {/* Right column (1/4 width) */}
           <div className="col-span-1 space-y-6">
             <DeviceControls devices={devices} onToggleDevice={toggleDevice} />
-            <VisitStats stats={visitStats} />
-            <RoomCamera />
+            <FanControl initialSpeed={fanSpeed} onSpeedChange={handleFanSpeedChange} />
           </div>
         </div>
       </div>

@@ -21,5 +21,6 @@ export const SearchIcon: React.FC = () => <Icon icon="mdi:magnify" className="te
 export const WeatherIcon: React.FC = () => <Icon icon="mdi:weather-partly-cloudy" />;
 export const TemperatureIcon: React.FC = () => <Icon icon="mdi:thermometer" />;
 export const HumidityIcon: React.FC = () => <Icon icon="mdi:water-percent" />;
-export const AirQualityIcon: React.FC = () => <Icon icon="mdi:air-filter" />;
 export const LightIntensityIcon: React.FC = () => <Icon icon="mdi:brightness-6" />;
+export const LedColorIcon: React.FC = () => <Icon icon="fluent:color-20-regular" />;
+export const ArrowDownIcon: React.FC = () => <Icon icon="fluent:arrow-sort-down-20-regular" />;

@@ -1,11 +1,11 @@
 export interface DeviceState {
     humidity: boolean;
     temperature: boolean;
-    airQuality: boolean;
+    ledColor?: boolean;
     lightIntensity: boolean;
   }
   
-  export type DeviceType = 'humidity' | 'temperature' | 'airQuality' | 'lightIntensity';
+  export type DeviceType = 'humidity' | 'temperature' | 'ledColor' | 'lightIntensity';
   
   export interface UpdateResponse {
     success: boolean;
@@ -15,7 +15,7 @@ export interface DeviceState {
     return {
       humidity: false,
       temperature: true,
-      airQuality: false,
+      ledColor: false,
       lightIntensity: false
     };
   };

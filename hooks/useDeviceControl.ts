@@ -5,7 +5,7 @@ export const useDeviceControl = () => {
   const [devices, setDevices] = useState<DeviceState>({
     humidity: false,
     temperature: true,
-    airQuality: false,
+    ledColor: false,
     lightIntensity: false
   });
   const [loading, setLoading] = useState<boolean>(true);
